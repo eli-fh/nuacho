@@ -1,0 +1,62 @@
+<div id="main">
+    <h1>בחר את המושב שלך</h1>
+    <div id="seats">
+        <!-- המושבים ייווצרו כאן אוטומטית -->
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 50px;
+    }
+    #main {
+        padding: 20px;
+        border: 2px solid #ddd;
+        background: #fff;
+        display: inline-block;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+    h1 {
+        color: #333;
+    }
+    .seat {
+        width: 30px;
+        height: 30px;
+        background: #28a745;
+        border: 1px solid #ddd;
+        margin: 5px;
+        display: inline-block;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .seat.taken {
+        background: #ff4d4d;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const seatsContainer = document.getElementById('seats');
+
+        // יצירת 30 מושבים לדוגמה
+        for(let i = 1; i <= 30; i++) {
+            const seatDiv = document.createElement('div');
+            seatDiv.classList.add('seat');
+            seatDiv.id = 'seat-' + i;
+            seatDiv.onclick = function() {
+                toggleSeat(i);
+            };
+            seatsContainer.appendChild(seatDiv);
+        }
+    });
+
+    // פונקציה לשינוי מצב מושב (פנוי/תפוס)
+    function toggleSeat(seatNumber) {
+        var seat = document.getElementById('seat-' + seatNumber);
+        seat.classList.toggle('taken');
+    }
+</script>
